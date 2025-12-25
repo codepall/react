@@ -16,12 +16,12 @@ export default async function handler(req, res) {
 
     // Konfigurasi sesuai screenshot
     const API_KEY = 'bc4a149fde30cd361ad7026e4250d933061619d3d453df350b7490c8fae60d4c';
-    const BASE_URL = 'https://foreign-marna-sithaunarathnapromax-9a005c2e.koyeb.app/api/reactions';
+    const BASE_URL = 'https://foreign-marna-sithaunarathnapromax-9a005c2e.koyeb.app/api/endpoint';
 
     // Menyusun URL dengan Query Parameters: ?url=...&react=...&apikey=...
     // Catatan: Nama parameter (url/react) disesuaikan dengan standar API sejenis, 
     // silakan ganti jika asitha.top menggunakan nama parameter berbeda (misal: 'link' atau 'text')
-    const targetUrl = `${BASE_URL}?apiKey=${API_KEY}&?post_link=${encodeURIComponent(post_link)}&reactions=${encodeURIComponent(reacts)}`;
+    const targetUrl = `${BASE_URL}?apiKey=${API_KEY}&?link=${encodeURIComponent(post_link)}&reacts=${encodeURIComponent(reacts)}`;
 
     const response = await fetch(targetUrl, {
       method: 'GET',
