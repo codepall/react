@@ -35,7 +35,7 @@ app.post('/api/react', async (req, res) => {
            jadi saya asumsikan strukturnya mengikuti standar API Asitha-MD.
            Gunakan API Key sebagai query parameter atau Bearer token.
         */
-        const response = await axios.get(`${BASE_URL}/api/react`, {
+        const response = await axios.get(`${BASE_URL}/api/endpoint`, {
             params: {
                 url: post_link,
                 reaction: reacts,
