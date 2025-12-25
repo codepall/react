@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <title>React Manager Client</title>
+    <style>
+        body { font-family: sans-serif; background: #0a192f; color: white; padding: 20px; }
+        .card { background: #112240; padding: 20px; border-radius: 8px; max-width: 400px; }
+        input { width: 100%; margin-bottom: 10px; padding: 8px; border-radius: 4px; border: none; }
+        button { background: #64ffda; color: #0a192f; padding: 10px; border: none; width: 100%; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h3>Add Daily Channel</h3>
+        <input type="text" id="channelLink" placeholder="WhatsApp Channel Link">
+        <input type="text" id="reaction" placeholder="Emoji (contoh: ✨,🔥,❤️)">
+        <button onclick="sendData()">Pay 280 & Add</button>
+        <p id="status"></p>
+    </div>
+
+    <script>
+        async function sendData() {
+            const channelLink = document.getElementById('channelLink').value;
+            const reactionType = document.getElementById('reaction').value;
+            const status = document.getElementById('status');
+
+            status.innerText = "Mengirim...";
+
+            try {
+                const response = await fetch('http://localhost:3000/add-channel', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ channelLink, reactionType })
+                });
+
+                const result = await response.json();
+                status.innerText = "Berhasil: " + JSON.stringify(result);
+            } catch (err) {
+                status.innerText = "Error: " + err.message;
+            }
+        }
+    </script>
+</body>
+</html>
