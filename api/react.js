@@ -2,7 +2,7 @@
 
 export default async function handler(req, res) {
   // Hanya izinkan metode POST dari frontend
-  if (req.method !== 'POST') {
+  if (req.method !== 'GET') {
     return res.status(405).json({ ok: false, error: 'Method Not Allowed. Use POST.' });
   }
 
@@ -24,7 +24,7 @@ export default async function handler(req, res) {
     const targetUrl = `${BASE_URL}?apiKey=${API_KEY}&?post_link=${encodeURIComponent(post_link)}&reacts=${encodeURIComponent(reacts)}`;
 
     const response = await fetch(targetUrl, {
-      method: 'POST',
+      method: 'GET',
       headers: {
         'Accept': 'application/json'
       }
