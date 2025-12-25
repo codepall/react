@@ -21,7 +21,7 @@ export default async function handler(req, res) {
     // Menyusun URL dengan Query Parameters: ?url=...&react=...&apikey=...
     // Catatan: Nama parameter (url/react) disesuaikan dengan standar API sejenis, 
     // silakan ganti jika asitha.top menggunakan nama parameter berbeda (misal: 'link' atau 'text')
-    const targetUrl = `${BASE_URL}?url=${encodeURIComponent(post_link)}&react=${encodeURIComponent(reacts)}&apikey=${API_KEY}`;
+    const targetUrl = `${BASE_URL}?apiKey=${API_KEY}&?url=${encodeURIComponent(post_link)}&react=${encodeURIComponent(reacts)}`;
 
     const response = await fetch(targetUrl, {
       method: 'GET',
